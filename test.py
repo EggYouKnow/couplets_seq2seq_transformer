@@ -15,7 +15,6 @@ def test(path):
 
     # Load data
     X, Sources = load_source_data(path)
-    # print(X, Sources)
     char2idx, idx2char = load_vocab()
 
 

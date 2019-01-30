@@ -132,7 +132,7 @@ class Graph():
                 
             # Final linear projection
             self.logits = tf.layers.dense(self.dec, len(char2idx))
-            self.preds = tf.to_int32(tf.arg_max(self.logits, dimension=-1))
+            self.preds = tf.to_int32(tf.argmax(self.logits, axis=-1))
             self.istarget = tf.to_float(tf.not_equal(self.y, 0))
             self.acc = tf.reduce_sum(tf.to_float(tf.equal(self.preds, self.y))*self.istarget)/ (tf.reduce_sum(self.istarget))
             tf.summary.scalar('acc', self.acc)
@@ -140,7 +140,7 @@ class Graph():
             if is_training:  
                 # Loss
                 self.y_smoothed = label_smoothing(tf.one_hot(self.y, depth=len(char2idx)))
-                self.loss = tf.nn.softmax_cross_entropy_with_logits(logits=self.logits, labels=self.y_smoothed)
+                self.loss = tf.nn.softmax_cross_entropy_with_logits_v2(logits=self.logits, labels=self.y_smoothed)
                 self.mean_loss = tf.reduce_sum(self.loss*self.istarget) / (tf.reduce_sum(self.istarget))
                
                 # Training Scheme

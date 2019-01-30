@@ -13,7 +13,6 @@ from train import Graph
 g = Graph(is_training=False)
 print("Graph loaded")
 
-# print(X, Sources)
 char2idx, idx2char = load_vocab()
 
 # Start session         
@@ -38,13 +37,6 @@ with g.graph.as_default():
 
             ### Write to file
             got = "".join(idx2char[idx] for idx in preds[0]).split("</S>")[0].strip()
-            # print("- 上联: " + ''.join(source) +"\n")
             print("- 我对下联: " + got + "\n\n")
-
-
-# if __name__ == "__main__":
-#     if len(sys.argv) != 2:
-#         print("Please give test file path. First is the corpus path, and the second is out path.")
-#     test(sys.argv[1])
     
     

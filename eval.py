@@ -17,8 +17,6 @@ def test():
     X, _, Sources, Targets = load_test_data()
     char2idx, idx2char = load_vocab()
 
-#     X, Sources, Targets = X[:33], Sources[:33], Targets[:33]
-
     # Start session
     with g.graph.as_default():
         sv = tf.train.Supervisor()

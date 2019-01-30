@@ -77,7 +77,6 @@ def load_source_data(test_path):
 
 def get_batch_data():
     # Load data
-    # X, Y = load_train_data()
     X, Y = load_train_data()    
     print("Load %d pairs of couplet." % (len(X)))
     # calc total batch count
