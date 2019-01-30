@@ -8,20 +8,21 @@ https://www.github.com/kyubyong/transformer
 class Hyperparams:
     '''Hyperparameters'''
     # data
-    source_train = 'corpora/train.tags.de-en.de'
-    target_train = 'corpora/train.tags.de-en.en'
-    source_test = 'corpora/IWSLT16.TED.tst2014.de-en.de.xml'
-    target_test = 'corpora/IWSLT16.TED.tst2014.de-en.en.xml'
+    source_train = 'data/train/in.txt'
+    target_train = 'data/train/out.txt'
+    source_test = 'data/test/in.txt'
+    target_test = 'data/test/out.txt'
+    vocab = 'data/vocab'
     
     # training
-    batch_size = 32 # alias = N
+    batch_size = 128 # alias = N
     lr = 0.0001 # learning rate. In paper, learning rate is adjusted to the global step.
     logdir = 'logdir' # log directory
     
     # model
-    maxlen = 10 # Maximum number of words in a sentence. alias = T.
+    maxlen = 30 # Maximum number of words in a sentence. alias = T.
                 # Feel free to increase this if you are ambitious.
-    min_cnt = 20 # words whose occurred less than min_cnt are encoded as <UNK>.
+    min_cnt = 0 # words whose occurred less than min_cnt are encoded as <UNK>.
     hidden_units = 512 # alias = C
     num_blocks = 6 # number of encoder/decoder blocks
     num_epochs = 20
