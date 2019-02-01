@@ -10,10 +10,9 @@ def make_vocab(fpaths, out):
     '''Constructs vocabulary.
     
     Args:
-      fpath: A string. Input file path.
-      fname: A string. Output file name.
+      fpaths: A string. Input file path.
+      out: A string. Output file name.
     
-    Writes vocabulary line by line to `preprocessed/fname`
     '''  
     char2cnt = Counter()
     for path in fpaths:
@@ -24,7 +23,7 @@ def make_vocab(fpaths, out):
             chars = line.split()
             char2cnt.update(chars)
     with open(out, 'w') as fout:
-        fout.write("{}\t1000000000\n{}\t1000000000\n{}\t1000000000\n{}\t1000000000\n".format("<PAD>", "<UNK>", "<S>", "</S>"))
+        fout.write("{}\t1000000000\n{}\t1000000000\n{}\t1000000000\n{}\t1000000000\n".format("<PAD>", "<UNK>", "<S>", "</S>")) # special tokens
         for word, cnt in char2cnt.most_common(len(char2cnt)):
             fout.write(u"{}\t{}\n".format(word, cnt))
         print("%d chars written!" % (len(char2cnt)))
